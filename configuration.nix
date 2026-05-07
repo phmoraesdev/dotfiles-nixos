@@ -241,6 +241,8 @@
     peaclock
     cmatrix
     fastfetch
+    cbonsai
+    
 
     # Cursor
     bibata-cursors
