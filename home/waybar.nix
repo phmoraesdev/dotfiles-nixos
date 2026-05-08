@@ -6,7 +6,7 @@
 
     style = ''
       * {
-        font-family: "JetBrainsMono Nerd Font", "Font Awesome 7 Free";
+        font-family: "JetBrainsMono Nerd Font";
       }
 
       #waybar {
@@ -99,11 +99,11 @@
       };
 
       temperature = {
-        format             = "{icon} {temperatureC}°C ";
-        hwmon-path         = "/sys/class/hwmon/hwmon2/temp1_input";
-        critical-threshold = 80;
-        format-icons       = [ "" "" "" ];
-      };
+      format             = "{icon} {temperatureC}°C ";
+      hwmon-path         = "/sys/class/hwmon/hwmon2/temp1_input";
+      critical-threshold = 80;
+      format-icons       = [ "󰈸" "󰈸" "󰸁" ];
+};
 
       memory = {
         format  = "󰫗 {}% ";
@@ -111,12 +111,12 @@
       };
 
       cpu = {
-        format  = " {usage}% ";
+        format  = "󰍛 {usage}% ";
         tooltip = false;
       };
 
       pulseaudio = {
-        format      = " {volume}% ";
+        format      = "󰕾 {volume}% ";
         scroll-step = 1;
         on-click    = "pavucontrol";
       };
@@ -127,6 +127,7 @@
         interval    = 2;
         tooltip     = true;
         on-click    = "bash -lc '~/.config/waybar/scripts/hyprsunset.sh toggle'";
+        on-click-right = "bash -lc 'pkill hyprsunset'";
       };
 
       "custom/bluetooth" = {
@@ -197,14 +198,11 @@
       }
 
       toggle() {
-        if ! have hyprctl; then exit 0; fi
-        ensure_running
-        local cur
-        cur="$(get_temp)"
-        if [[ "$cur" -le $((DAY_TEMP - 1)) ]]; then
-          set_temp "$DAY_TEMP"
+        if pgrep -x hyprsunset >/dev/null 2>&1; then
+          pkill hyprsunset
         else
-          set_temp "$NIGHT_TEMP"
+          hyprsunset -t $NIGHT_TEMP &
+          disown
         fi
       }
 

@@ -28,9 +28,16 @@
   # ==========================================
   # BOOTLOADER
   # ==========================================
-  boot.loader.systemd-boot.enable      = true;
+  boot.loader.systemd-boot.enable      = false;
   boot.loader.efi.canTouchEfiVariables = true;
-  boot.kernelParams = [ "nvidia_drm.modeset=1" ];
+  boot.kernelParams                    = [ "nvidia_drm.modeset=1" ];
+
+  boot.loader.grub = {
+    enable      = true;
+    device      = "nodev";
+    efiSupport  = true;
+    useOSProber = true;
+  };
 
   # ==========================================
   # REDE
@@ -270,6 +277,7 @@
     unzip
 
     adwaita-qt6
+    
   ];
 
   # ==========================================
