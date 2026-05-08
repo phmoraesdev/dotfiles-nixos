@@ -5,7 +5,7 @@
     {
         "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
         "logo": {
-            "source": "~/.config/fastfetch/lambda.txt",
+            "source": "~/.config/fastfetch/nixos.txt",
             "type": "file"
         },
         "modules": [
@@ -30,6 +30,30 @@
     }
   '';
 
+    home.file.".config/fastfetch/nixos.txt".text = ''
+           _         ____      _           
+          /  \       \   \    /  \         
+          \   \       \   \  /   /         
+           \   \       \   \/   /          
+      ______\   \______ \      /           
+     /                 \ \    /     /\     
+    /_______    ________\ \   \    /  \    
+           /   /           \   \  /   /    
+          /   /             \  / /   /     
+ ________/   /               \/ /   /_____ 
+/           /                  /          \
+\______    /                  /   ________/
+      /   / /\               /   /         
+     /   / /  \             /   /          
+    /   /  \   \  _________/   /______     
+    \  /    \   \ \                  /     
+     \/     /    \ \______    ______/      
+           /      \       \   \            
+          /   /\   \       \   \           
+         /   /  \   \       \   \          
+         \ _/    \___\       \ _/          ⠀⠀⠀⠀⠀
+  '';
+
   home.file.".config/fastfetch/lambda.txt".text = ''
     ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⣠⣤⣶⣶⣿⣿⣿⣿⣿⣿⣶⣶⣤⣄⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
     ⠀⠀⠀⠀⠀⠀⠀⣠⣴⣾⣿⣿⣿⡿⠿⠟⠛⠛⠛⠛⠻⠿⢿⣿⣿⣿⣷⣦⣄⠀⠀⠀⠀⠀⠀⠀
@@ -51,3 +75,5 @@
     ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠙⠛⠿⠿⣿⣿⣿⣿⣿⣿⠿⠿⠛⠋⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
   '';
 }
+
+

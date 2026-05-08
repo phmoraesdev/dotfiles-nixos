@@ -18,7 +18,7 @@
       exec-once = dunst
       exec-once = /run/current-system/sw/libexec/polkit-gnome-authentication-agent-1
       exec-once = nm-applet --indicator
-      exec-once = swww img ~/Pictures/Wallpapers/oil_painting.png.jpg
+      exec-once = sleep 1 && swww img ~/Pictures/Wallpapers/thorns.jpg
 
       #ENVIRONMENT VARIABLES
       env = XCURSOR_SIZE,24
@@ -95,8 +95,8 @@
       }
 
       misc {
-          force_default_wallpaper = -1
-          disable_hyprland_logo   = false
+          force_default_wallpaper = 0
+          disable_hyprland_logo   = true
       }
 
       # INPUT
