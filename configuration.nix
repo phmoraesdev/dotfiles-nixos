@@ -1,9 +1,3 @@
-# ============================================================
-# NixOS - configuration.nix
-# Setup: Hyprland + Waybar + Wofi + Dunst + Kitty + Fish
-# GPU: NVIDIA (proprietária) | Wayland
-# ============================================================
-
 { config, pkgs, ... }:
 
 {
@@ -20,7 +14,6 @@
   home-manager.useUserPackages      = true;
   home-manager.backupFileExtension  = "backup";
   home-manager.users.pepe = { lib, ... }: {
-    # Suprime o aviso de versão (HM 25.05 + NixOS 25.11)
     home.enableNixpkgsReleaseCheck = false;
     imports = [ /etc/nixos/home.nix ];
   };
@@ -42,7 +35,7 @@
   # ==========================================
   # REDE
   # ==========================================
-  networking.hostName              = "nixos";
+  # networking.hostName              = "nixos";
   networking.networkmanager.enable = true;
 
   # ==========================================
@@ -170,7 +163,6 @@
       nerd-fonts.jetbrains-mono
       noto-fonts
       noto-fonts-color-emoji
-      font-awesome
     ];
     fontconfig.defaultFonts = {
       monospace = [ "JetBrainsMono Nerd Font Mono" ];
@@ -183,10 +175,6 @@
   # PACOTES DO SISTEMA
   # ==========================================
   environment.systemPackages = with pkgs; [
-    # Terminal e shell
-    kitty
-    fish
-
     # WM e interface
     hyprland
     waybar
@@ -207,19 +195,12 @@
 
     # Áudio
     pavucontrol
-    playerctl
-
-    # Brilho
-    brightnessctl
 
     # Rede
     networkmanagerapplet
 
     # Polkit
     polkit_gnome
-
-    # File manager
-    kdePackages.dolphin
 
     # Bluetooth
     blueman
@@ -228,62 +209,25 @@
     xdg-utils
     xdg-user-dirs
     zenity
-
-    # Dev
-    neovim
-    gcc
-    nodejs
-    ripgrep
-    fd
-    vscodium
-    python3
-    git
-    dbeaver-bin
-    virtualbox
-    wireshark
-
-    # Monitor
-    btop
-    pipes
-    peaclock
-    cmatrix
-    fastfetch
-    cbonsai
-    
-
-    # Cursor
-    bibata-cursors
-
-    # Browser
-    firefox
-    tor-browser
-    chromium
-
-
-    # Aplicativos
-    wootility
-    steam
-    discord
-    spotify
-    obs-studio
-
-    # Arquivos
-    onlyoffice-desktopeditors
-    imv
-    mpv
-    gedit
-    zathura
     zip
     unzip
 
+    # Dev (ferramentas de sistema)
+    gcc
+    nodejs
+    python3
+    git
+    virtualbox
+    wireshark
+
+    # Cursor e tema
+    bibata-cursors
     adwaita-qt6
-    
   ];
 
   # ==========================================
   # CONFIGURAÇÕES GERAIS
   # ==========================================
-  # Display Manager
   services.displayManager.ly.enable = true;
 
   programs.firefox.enable    = true;
