@@ -92,7 +92,10 @@
   # Portal XDG (screen share, file picker, etc.)
   xdg.portal = {
     enable       = true;
-    extraPortals = [ pkgs.xdg-desktop-portal-hyprland ];
+    extraPortals = [ 
+    pkgs.xdg-desktop-portal-hyprland
+    pkgs.xdg-desktop-portal-gtk
+    ];
   };
 
   # ==========================================
@@ -184,9 +187,10 @@
     hyprlock
     hyprsunset
     swww
+    kdePackages.dolphin
 
     # Screenshot
-    flameshot
+    grimblast
     grim
     slurp
 
@@ -232,6 +236,13 @@
 
   programs.firefox.enable    = true;
   nixpkgs.config.allowUnfree = true;
+  hardware.wooting.enable    = true;
+
+  nix.gc = {
+    automatic = true;
+    dates     = "weekly";
+    options   = "--delete-older-than 7d";
+  };
 
   # ==========================================
   # VERSÃO DO SISTEMA

@@ -28,11 +28,13 @@
     ripgrep
     fd
     dbeaver-bin
+    claude-code
+    thonny
 
     # Browser
     firefox
+    google-chrome
     tor-browser
-    chromium
 
     # Aplicativos
     wootility
@@ -40,6 +42,7 @@
     discord
     spotify
     obs-studio
+    hydralauncher
 
     # Mídia e arquivos
     onlyoffice-desktopeditors
@@ -54,6 +57,7 @@
     cmatrix
     cbonsai
     fastfetch
+    lavat
 
     # Utilitários do usuário
     wl-clipboard
@@ -72,7 +76,17 @@
     name       = "Bibata-Modern-Classic";
     size       = 24;
   };
-
+  
+  xdg.mimeApps = {
+    enable = true;
+    defaultApplications = {
+      "video/mp4"       = "mpv.desktop";
+      "video/mkv"       = "mpv.desktop";
+      "video/avi"       = "mpv.desktop";
+      "video/webm"      = "mpv.desktop";
+      "video/x-matroska" = "mpv.desktop";
+    };
+  };
   # ==========================================
   # IMPORTS
   # ==========================================

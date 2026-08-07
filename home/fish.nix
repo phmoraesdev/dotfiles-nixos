@@ -47,6 +47,7 @@
       nixrebuild = "sudo nixos-rebuild switch";
       nixedit    = "sudo nvim /etc/nixos/configuration.nix";
       hmedit     = "sudo nvim /etc/nixos/home.nix";
+      wootility  = "cd ~ && wootility";
     };
   };
 }

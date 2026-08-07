@@ -126,7 +126,7 @@
       bind = $mainMod, tab,       exec,              $menu
       bind = $mainMod, P,         pseudo,
       bind = $mainMod, J,         togglesplit,
-      bind = $mainMod, S,         exec,              flameshot gui
+      bind = $mainMod, S,         exec,              grimblast copysave area
 
       bind = $mainMod, left,  movefocus, l
       bind = $mainMod, right, movefocus, r
