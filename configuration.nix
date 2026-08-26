@@ -1,22 +1,17 @@
+# ============================================================
+# NixOS - configuration.nix
+# Setup: Hyprland + Waybar + Wofi + Dunst + Kitty + Fish
+# GPU: NVIDIA (proprietária) | Wayland
+# ============================================================
+
 { config, pkgs, ... }:
 
 {
   imports =
     [
       ./hardware-configuration.nix
-      <home-manager/nixos>
+      # Home Manager vem do flake.nix
     ];
-
-  # ==========================================
-  # HOME MANAGER
-  # ==========================================
-  home-manager.useGlobalPkgs        = true;
-  home-manager.useUserPackages      = true;
-  home-manager.backupFileExtension  = "backup";
-  home-manager.users.pepe = { lib, ... }: {
-    home.enableNixpkgsReleaseCheck = false;
-    imports = [ /etc/nixos/home.nix ];
-  };
 
   # ==========================================
   # BOOTLOADER
@@ -35,7 +30,6 @@
   # ==========================================
   # REDE
   # ==========================================
-  # networking.hostName              = "nixos";
   networking.networkmanager.enable = true;
 
   # ==========================================
@@ -89,12 +83,11 @@
     xwayland.enable = true;
   };
 
-  # Portal XDG (screen share, file picker, etc.)
   xdg.portal = {
     enable       = true;
-    extraPortals = [ 
-    pkgs.xdg-desktop-portal-hyprland
-    pkgs.xdg-desktop-portal-gtk
+    extraPortals = [
+      pkgs.xdg-desktop-portal-hyprland
+      pkgs.xdg-desktop-portal-gtk
     ];
   };
 
@@ -166,6 +159,7 @@
       nerd-fonts.jetbrains-mono
       noto-fonts
       noto-fonts-color-emoji
+      font-awesome
     ];
     fontconfig.defaultFonts = {
       monospace = [ "JetBrainsMono Nerd Font Mono" ];
@@ -212,11 +206,12 @@
     # Utilitários
     xdg-utils
     xdg-user-dirs
+    xdg-desktop-portal-gtk
     zenity
     zip
     unzip
 
-    # Dev (ferramentas de sistema)
+    # Dev
     gcc
     nodejs
     python3
@@ -243,6 +238,9 @@
     dates     = "weekly";
     options   = "--delete-older-than 7d";
   };
+
+  # Habilitar flakes
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   # ==========================================
   # VERSÃO DO SISTEMA

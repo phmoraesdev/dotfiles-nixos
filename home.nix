@@ -13,29 +13,24 @@
   home.packages = with pkgs; [
     # Terminal
     kitty
-
     # Editor
     neovim
     vscodium
-
     # File manager
     yazi
-    ffmpegthumbnailer  # preview de vídeos
-    unar               # preview de zips
-    poppler            # preview de pdf
-
+    ffmpegthumbnailer
+    unar
+    poppler
     # Dev
     ripgrep
     fd
     dbeaver-bin
     claude-code
     thonny
-
     # Browser
     firefox
     google-chrome
     tor-browser
-
     # Aplicativos
     wootility
     steam
@@ -43,13 +38,11 @@
     spotify
     obs-studio
     hydralauncher
-
     # Mídia e arquivos
     onlyoffice-desktopeditors
     imv
     mpv
     zathura
-
     # Terminal toys
     btop
     pipes
@@ -58,7 +51,6 @@
     cbonsai
     fastfetch
     lavat
-
     # Utilitários do usuário
     wl-clipboard
     playerctl
@@ -76,17 +68,21 @@
     name       = "Bibata-Modern-Classic";
     size       = 24;
   };
-  
+
+  # ==========================================
+  # MIME TYPES
+  # ==========================================
   xdg.mimeApps = {
     enable = true;
     defaultApplications = {
-      "video/mp4"       = "mpv.desktop";
-      "video/mkv"       = "mpv.desktop";
-      "video/avi"       = "mpv.desktop";
-      "video/webm"      = "mpv.desktop";
+      "video/mp4"        = "mpv.desktop";
+      "video/mkv"        = "mpv.desktop";
+      "video/avi"        = "mpv.desktop";
+      "video/webm"       = "mpv.desktop";
       "video/x-matroska" = "mpv.desktop";
     };
   };
+
   # ==========================================
   # IMPORTS
   # ==========================================
