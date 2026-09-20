@@ -5,7 +5,7 @@
     enable = true;
 
     interactiveShellInit = ''
-      set fish_greeting ""
+      set fish_greeting "" 
 
       set -l azul     6CB6FF
       set -l verde    5FD7A7
@@ -43,7 +43,7 @@
 
     shellAliases = {
       ls         = "ls --color=auto";
-      ff         = "fastfetch";
+      ff         = "fetch";
       nixrebuild = "sudo nixos-rebuild switch";
       nixedit    = "sudo nvim /etc/nixos/configuration.nix";
       hmedit     = "sudo nvim /etc/nixos/home.nix";

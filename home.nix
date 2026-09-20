@@ -25,6 +25,8 @@
     ripgrep
     fd
     dbeaver-bin
+    mysql-workbench
+    mysql84
     claude-code
     thonny
     # Browser
@@ -40,6 +42,7 @@
     hydralauncher
     # Mídia e arquivos
     onlyoffice-desktopeditors
+    gimp
     imv
     mpv
     zathura
@@ -51,6 +54,7 @@
     cbonsai
     fastfetch
     lavat
+    fetch
     # Utilitários do usuário
     wl-clipboard
     playerctl
@@ -62,6 +66,7 @@
   # CURSOR
   # ==========================================
   home.pointerCursor = {
+    enable     = true;
     gtk.enable = true;
     x11.enable = true;
     package    = pkgs.bibata-cursors;
@@ -96,6 +101,7 @@
     ./home/wofi.nix
     ./home/wlogout.nix
     ./home/fastfetch.nix
+    ./home/fetch.nix
     ./home/git.nix
     ./home/nvim.nix
   ];

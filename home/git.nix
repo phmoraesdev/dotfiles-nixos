@@ -3,7 +3,7 @@
 {
   programs.git = {
     enable    = true;
-    userName  = "Pedro Moraes";
-    userEmail = "ph.moraes.dev@gmail.com";
+    settings.user.name  = "Pedro Moraes";
+    settings.user.email = "ph.moraes.dev@gmail.com";
   };
 }

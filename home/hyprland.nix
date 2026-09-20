@@ -3,6 +3,7 @@
 {
   wayland.windowManager.hyprland = {
     enable = true;
+    configType = "hyprlang";
 
     extraConfig = ''
       #MONITORS
@@ -14,11 +15,11 @@
       $menu        = wofi --show drun --allow-images
 
       #AUTOSTART
-      exec-once = waybar & swww-daemon
+      exec-once = waybar & awww-daemon
       exec-once = dunst
       exec-once = /run/current-system/sw/libexec/polkit-gnome-authentication-agent-1
       exec-once = nm-applet --indicator
-      exec-once = sleep 1 && swww img ~/Pictures/Wallpapers/thorns.jpg
+      exec-once = sleep 3 && awww img ~/Pictures/Wallpapers/thorns.jpg
 
       #ENVIRONMENT VARIABLES
       env = XCURSOR_SIZE,24
@@ -86,7 +87,6 @@
       }
 
       dwindle {
-          pseudotile     = true
           preserve_split = true
       }
 
@@ -125,7 +125,7 @@
       bind = $mainMod, V,         togglefloating,
       bind = $mainMod, tab,       exec,              $menu
       bind = $mainMod, P,         pseudo,
-      bind = $mainMod, J,         togglesplit,
+      bind = $mainMod, J,         layoutmsg,         togglesplit
       bind = $mainMod, S,         exec,              grimblast copysave area
 
       bind = $mainMod, left,  movefocus, l
@@ -177,10 +177,10 @@
       bindl = , XF86AudioPrev,  exec, playerctl previous
 
       ## WINDOWS AND WORKSPACES
-      windowrulev2 = suppressevent maximize, class:.*
-      windowrulev2 = nofocus, class:^$, title:^$, xwayland:1, floating:1, fullscreen:0, pinned:0
-      windowrulev2 = float, class:hyprland-run
-      windowrulev2 = move 20 80%, class:hyprland-run
+      windowrulev = suppressevent maximize, class:.*
+      windowrulev = nofocus, class:^$, title:^$, xwayland:1, floating:1, fullscreen:0, pinned:0
+      windowrulev = float, class:hyprland-run
+      windowrulev = move 20 80%, class:hyprland-run
     '';
   };
 }

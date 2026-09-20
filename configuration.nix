@@ -141,6 +141,20 @@
   services.printing.enable = true;
 
   # ==========================================
+  # MYSQL (estudo local)
+  # ==========================================
+  services.mysql = {
+    enable  = true;
+    package = pkgs.mysql84;
+  };
+
+  # ==========================================
+  # KEYRING (cofre de senhas: MySQL Workbench, etc.)
+  # ==========================================
+  services.gnome.gnome-keyring.enable = true;
+  security.pam.services.ly.enableGnomeKeyring = true;
+
+  # ==========================================
   # USUÁRIO
   # ==========================================
   users.users.pepe = {
@@ -180,7 +194,7 @@
     wlogout
     hyprlock
     hyprsunset
-    swww
+    awww
     kdePackages.dolphin
 
     # Screenshot
@@ -218,6 +232,7 @@
     git
     virtualbox
     wireshark
+    etcd
 
     # Cursor e tema
     bibata-cursors
@@ -246,4 +261,6 @@
   # VERSÃO DO SISTEMA
   # ==========================================
   system.stateVersion = "25.05";
+
+  programs.nix-ld.enable = true;
 }
