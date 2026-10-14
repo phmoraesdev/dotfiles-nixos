@@ -5,7 +5,7 @@
     monitor =
 
     background {
-        path  = /home/pepe/Pictures/Wallpapers/silver-surfer.png
+        path  = ${config.home.homeDirectory}/Pictures/Wallpapers/silver-surfer.png
         color = rgb(0, 0, 0)
     }
 

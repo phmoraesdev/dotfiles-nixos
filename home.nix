@@ -103,6 +103,7 @@
     ./home/wlogout.nix
     ./home/fastfetch.nix
     ./home/fetch.nix
+    ./home/wallpapers.nix
     ./home/git.nix
     ./home/nvim.nix
   ];

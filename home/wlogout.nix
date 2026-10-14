@@ -1,6 +1,13 @@
 { config, pkgs, ... }:
 
 {
+  home.file.".config/wlogout/icons/lock.png".source      = ./assets/wlogout/lock.png;
+  home.file.".config/wlogout/icons/logout.png".source    = ./assets/wlogout/logout.png;
+  home.file.".config/wlogout/icons/suspend.png".source   = ./assets/wlogout/suspend.png;
+  home.file.".config/wlogout/icons/hibernate.png".source = ./assets/wlogout/hibernate.png;
+  home.file.".config/wlogout/icons/shutdown.png".source  = ./assets/wlogout/shutdown.png;
+  home.file.".config/wlogout/icons/reboot.png".source    = ./assets/wlogout/reboot.png;
+
   home.file.".config/wlogout/layout".text = ''
     {
         "label" : "lock",
