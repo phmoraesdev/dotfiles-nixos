@@ -1,31 +1,19 @@
 # ============================================================
-# NixOS - configuration.nix
+# NixOS - configuration.nix (comum a todos os hosts)
 # Setup: Hyprland + Waybar + Wofi + Dunst + Kitty + Fish
-# GPU: NVIDIA (proprietária) | Wayland
+# Wayland | diferenças de GPU/bootloader por host em hosts/<host>/host.nix
 # ============================================================
 
 { config, pkgs, ... }:
 
 {
-  imports =
-    [
-      ./hardware-configuration.nix
-      # Home Manager vem do flake.nix
-    ];
+  # Hardware-configuration.nix, host.nix (bootloader/GPU) e Home Manager
+  # são incluídos por host no flake.nix.
 
   # ==========================================
-  # BOOTLOADER
+  # BOOTLOADER (comum a todos os hosts)
   # ==========================================
-  boot.loader.systemd-boot.enable      = false;
   boot.loader.efi.canTouchEfiVariables = true;
-  boot.kernelParams                    = [ "nvidia_drm.modeset=1" ];
-
-  boot.loader.grub = {
-    enable      = true;
-    device      = "nodev";
-    efiSupport  = true;
-    useOSProber = true;
-  };
 
   # ==========================================
   # REDE
@@ -59,21 +47,9 @@
   };
 
   # ==========================================
-  # NVIDIA
-  # ==========================================
-  services.xserver.videoDrivers = [ "nvidia" ];
-
-  # ==========================================
   # UDISKS2 (automontagem de discos no Dolphin)
   # ==========================================
   services.udisks2.enable = true;
-
-  hardware.nvidia = {
-    modesetting.enable     = true;
-    open                   = false;
-    nvidiaSettings         = true;
-    powerManagement.enable = false;
-  };
 
   hardware.graphics = {
     enable      = true;
@@ -97,13 +73,11 @@
   };
 
   # ==========================================
-  # VARIÁVEIS DE AMBIENTE (NVIDIA + Wayland)
+  # VARIÁVEIS DE AMBIENTE (Wayland)
+  # Variáveis de GPU (ex.: LIBVA_DRIVER_NAME) ficam no host.nix de cada host.
   # ==========================================
   environment.sessionVariables = {
     WLR_NO_HARDWARE_CURSORS             = "1";
-    GBM_BACKEND                         = "nvidia-drm";
-    __GLX_VENDOR_LIBRARY_NAME           = "nvidia";
-    LIBVA_DRIVER_NAME                   = "nvidia";
     XDG_SESSION_TYPE                    = "wayland";
     XDG_CURRENT_DESKTOP                 = "Hyprland";
     XDG_SESSION_DESKTOP                 = "Hyprland";
@@ -280,7 +254,6 @@
 
   programs.firefox.enable    = true;
   nixpkgs.config.allowUnfree = true;
-  hardware.wooting.enable    = true;
 
   nix.gc = {
     automatic = true;

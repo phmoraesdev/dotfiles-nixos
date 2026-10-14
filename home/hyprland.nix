@@ -1,5 +1,11 @@
-{ config, pkgs, ... }:
+{ config, pkgs, hostname, ... }:
 
+let
+  monitor =
+    if hostname == "thinkpad"
+    then "monitor = , preferred, auto, 1"
+    else "monitor = , 1920x1080@144, auto, 1";
+in
 {
   wayland.windowManager.hyprland = {
     enable = true;
@@ -7,7 +13,7 @@
 
     extraConfig = ''
       #MONITORS
-      monitor = , 1920x1080@144, auto, 1
+      ${monitor}
 
       #MY PROGRAMS
       $terminal    = kitty
