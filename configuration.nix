@@ -63,6 +63,11 @@
   # ==========================================
   services.xserver.videoDrivers = [ "nvidia" ];
 
+  # ==========================================
+  # UDISKS2 (automontagem de discos no Dolphin)
+  # ==========================================
+  services.udisks2.enable = true;
+
   hardware.nvidia = {
     modesetting.enable     = true;
     open                   = false;
@@ -107,6 +112,12 @@
     MOZ_ENABLE_WAYLAND                  = "1";
     NIXOS_OZONE_WL                      = "1";
     XCURSOR_SIZE                        = "24";
+
+    # python3Packages.etcd3 (nixpkgs) embute arquivos _pb2.py gerados com
+    # protobuf antigo; o pacote protobuf atual do nixpkgs usa a
+    # implementação em C++ que rejeita esses arquivos. Forçar a
+    # implementação pura-Python resolve sem alterar o código do usuário.
+    PROTOCOL_BUFFERS_PYTHON_IMPLEMENTATION = "python";
   };
 
   # ==========================================
@@ -228,7 +239,7 @@
     # Dev
     gcc
     nodejs
-    python3
+    (python3.withPackages (ps: [ ps.etcd3 ]))
     git
     virtualbox
     wireshark
@@ -238,6 +249,29 @@
     bibata-cursors
     adwaita-qt6
   ];
+
+  # ==========================================
+  # FLATPAK (Sober - cliente Roblox)
+  # ==========================================
+  services.flatpak = {
+    enable = true;
+
+    remotes = [
+      {
+        name     = "flathub";
+        location = "https://dl.flathub.org/repo/flathub.flatpakrepo";
+      }
+    ];
+
+    packages = [
+      "org.vinegarhq.Sober"
+    ];
+
+    update.auto = {
+      enable    = true;
+      onCalendar = "weekly";
+    };
+  };
 
   # ==========================================
   # CONFIGURAÇÕES GERAIS

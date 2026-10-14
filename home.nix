@@ -40,6 +40,7 @@
     spotify
     obs-studio
     hydralauncher
+    parsec-bin
     # Mídia e arquivos
     onlyoffice-desktopeditors
     gimp
